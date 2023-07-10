@@ -1,0 +1,45 @@
+<%- include('../partials/header'); %>
+
+<div class="">
+    <div class="">
+
+        <h1>
+            <%= user.username %>'s profile
+        </h1>
+
+        <h5>
+            <%= user.email %>
+        </h5>
+
+        <h4>
+            <%= user.firstName + " " + user.lastName %>
+        </h4>
+        
+        <% if(user.avatar) { %>
+            <img src="<%= user.avatar %>" alt="user profile picture">
+        <% } else { %>
+            <img src="https://res.cloudinary.com/bembit/image/upload/v1582219790/account.svg" alt="user default test picture">
+        <% } %> 
+        
+        <% if(meetings.length > 0) { %>
+        <h3>
+            Meetings scheduled by <%= user.username %>
+        </h3>
+
+        <ul>
+            
+            <% meetings.forEach(function(meetings) { %>
+            
+            <li><a href="/meetings/<%= meetings.id %>"> <%= meetings.name %> </a></li>
+            
+            <% }); %>
+
+        </ul>
+        <% } else { %>
+            <h3>You don't have any meetings yet.</h3>
+            <a href="/meetings/add">Go Scheduled one</a>
+        <% } %> 
+    </div>
+</div>
+
+<%- include('../partials/footer'); %>

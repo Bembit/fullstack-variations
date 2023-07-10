@@ -1,0 +1,44 @@
+<%- include('./partials/header'); %>
+
+<div class="container">
+ 
+    <% users.forEach(function(user){ %>
+                            
+        <!-- individual cards -->
+        <div>
+            <div>
+
+                <!-- tried something stupoid. when matching just match js classes -->
+
+                <a href="/users/<%=user.id%>">
+                    <h4>
+                        <%= user.username %>
+                    </h4>
+                </a>
+
+                <% if(user.avatar) { %>
+                    <img class="defaultProfilePic" src="<%= user.avatar %>" alt="user profile picture">
+                <% } else { %>
+                    <img class="defaultProfilePic" src="https://res.cloudinary.com/bembit/image/upload/v1582219790/account.svg" alt="user default test picture">
+                <% } %> 
+
+                <!-- <div><%= user.avatar %></div> -->
+                <div><%= user.firstName %></div>
+                <div><%= user.lastName %></div>
+                <div><%= user.email %></div>
+        
+                <% if(user.created) { %>
+                    <div>joined on: <%= user.created.toDateString() %></div>
+                <% } else { %>
+                    <div> ^_- </div>
+                <% } %> 
+
+            </div>
+        </div>
+   
+    <% }); %>
+    
+    
+</div>
+
+<%- include('./partials/footer'); %>

@@ -1,0 +1,27 @@
+<% include ./partials/header %>
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>NodeJS Blog Demo</title>
+        <!--<link rel="stylesheet" href="/stylesheets/main.css">-->
+    </head>
+    <body>
+    <div class="wrapper">
+        <div class="welcome middle">
+            <h1>
+                welcome
+            </h1>
+            <h4>
+                this is a NodeJS blog demo
+            </h4>
+
+            <% if(!currentUser) { %>
+                <a class="" href="/login">Login</a>
+                <h3>or</h3>
+                <a class="" href="/register">Register</a>
+                <% } %>
+        </div>
+    </div>
+    <% include ./partials/footer %>
+</html>

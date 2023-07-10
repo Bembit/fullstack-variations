@@ -1,0 +1,18 @@
+<%- include('../partials/header'); %>
+
+<div class="container">
+    <h2> editing posts -> <%= posts.name %> </h2>
+    
+        <form class="" action="/posts/<%= posts._id %>?_method=PUT" method="POST">
+            <div class="">
+                <input class="" type="text" name="posts[name]" value="<%= posts.name %>">
+            </div>
+            <div class="">    
+                <input class="" type="text" name="posts[content]" value="<%= posts.content %>">
+            </div>
+                <input class="" type="submit" value="Edit posts">
+        </form>
+
+</div>    
+
+<%- include('../partials/footer'); %>

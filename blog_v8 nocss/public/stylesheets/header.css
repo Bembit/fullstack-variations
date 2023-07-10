@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap');
+
+:root {
+	--black: #0b0b0b;
+	--dark: #333;
+    --white: #fff;
+
+    --grey1: #f9f9f9;
+    --grey2: #f1f1f1;
+    --grey3: #ececec;
+    --grey4: #e6e1d2;
+    --light-blue: #91a5dc;
+    /* #5675cc */
+    /* #3a559f */
+    --blue1: #309cf5;
+	--blue2: #1b96f1;
+    --blue3: #2793ec;
+    --blue4: #1f88df;
+    --blue5: #007bff;
+    --blue6: #3544dc;
+
+    --blue7: #8192fa;
+
+
+    --red1: #ff8c8c;
+    --red2: #ff5959;
+    --red3: #c34242;
+
+    --test: 1px solid black;
+}
+
+*,
+*::after,
+*::before {
+	margin: 0;
+	padding: 0;
+	box-sizing: inherit;
+}
+
+::selection {
+	background-color: var(--black);
+	color: var(--blue1);
+}
+
+html {
+	font-size: 62.5%;
+}
+
+
+
+header {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--white);
+    border: var(--test);
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    text-align: center;
+    padding-left: 6rem;
+    padding-right: 6rem;
+}
+
+.header-top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border: var(--test);
+    align-items: center;
+}
+
+.header-top-left {
+    display: flex;
+    flex-basis: auto;
+    border: var(--test);
+}
+
+.header-top-left i {
+    font-size: 3rem;
+}
+
+.header-top-middle {
+    display: flex;
+    flex-basis: 30%;
+    border: var(--test);
+    align-content: center;
+    align-items: center;
+    padding: auto;
+}
+
+.header-top-right {
+    display: flex;
+    flex-basis: 70%;
+    border: var(--test);
+    align-content: center;
+    align-items: center;
+    padding: auto;
+}
+
+nav {
+    display: flex;
+    border: var(--test);
+    justify-content: space-between;
+}
+
+nav a div {
+    height: 25px;
+    width: 25px;
+    background-position: center center;
+    background-size: cover;
+    border-radius: 50%;
+}

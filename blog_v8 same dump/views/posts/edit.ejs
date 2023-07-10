@@ -1,0 +1,18 @@
+<% include ../partials/header %>
+
+<div class="wrapper">
+    <div class="middle">
+    <h2> edit blogpost - <%= shitshow.name %> </h2>
+    
+            <form class="middle" action="/shitshow/<%= shitshow._id %>?_method=PUT" method="POST">
+                <div class="">
+                    <input class="" type="text" name="shitshow[name]" value="<%= shitshow.name %>">
+                </div>
+                <div class="">    
+                    <input class="" type="text" name="shitshow[content]" value="<%= shitshow.content %>">
+                </div>
+                    <input class="" type="submit" value="Edit post">
+            </form>
+    </div>
+</div>    
+<% include ../partials/footer %>

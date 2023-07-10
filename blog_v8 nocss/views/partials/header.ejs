@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>demo</title>
+        <link rel="stylesheet" href="/stylesheets/styles.css">
+        <link rel="stylesheet" href="/stylesheets/header.css">
+        <link rel="stylesheet" href="https://kit-free.fontawesome.com/releases/latest/css/free.min.css">
+    </head>
+    <body>
+        <header>
+            <div class="header-top">
+                <div class="header-top-left">
+                    <i class="fab fa-facebook-square fa-3x"></i>
+                </div>
+                <div class="header-top-middle">
+                    search
+                </div>
+                <div class="header-top-right">
+                    <a class="" href="/">home</a>
+                    <a class="" href="/posts/add">addPost</a>
+                    <a class="" href="/posts/all">Posts</a>
+                    <a class="" href="/login">login</a>
+                    <a class="" href="/register">register</a>
+            
+
+                    <% if(!currentUser) { %>
+                    
+                        <a class="" href="/login">You are not logged in</a>
+                        
+                        <% } else { %>
+                        
+                        <a class="" href="/users">Users</a>
+                        
+                        <a class="" href="/users/<%=currentUser.id%>">
+                            <div class="profile-avatar" style="background-image: url(<%=currentUser.avatar%>)"></div>
+                            &nbsp;&nbsp;&nbsp;<%= currentUser.username %>
+                        </a>
+                        
+                        <a class="" href="/logout">Sing out</a>
+    
+
+                
+                    <% } %>
+                </div>
+            </div>
+            <nav class="nav">
+                <a class="" href="/">home</a>
+                <a class="" href="/posts/add">addPost</a>
+                <a class="" href="/posts/all">Posts</a>
+                <a class="" href="/login">login</a>
+                <a class="" href="/register">register</a>
+
+                <% if(!currentUser) { %>
+
+                <a class="" href="/login">You are not logged in</a>
+
+                <% } else { %>
+
+                <a class="" href="/users">Users</a>
+
+                <a class="" href="/users/<%=currentUser.id%>"><div class="profile-avatar" style="background-image: url(<%=currentUser.avatar%>)"></div>
+                    &nbsp;&nbsp;&nbsp;<%= currentUser.username %></a>
+
+                <a class="" href="/logout">Sing out</a>
+
+                <% } %>
+
+            </nav>
+           
+           
+        </header>
+
+    <% if(error && error.length > 0) { %>            
+
+        <p>
+            <%= error %>
+        </p>
+            
+    <% } %>
+
+    <% if(success && success.length > 0) { %>            
+    
+        <p>
+            <%= success %>
+        </p>
+        
+    <% } %> 
+

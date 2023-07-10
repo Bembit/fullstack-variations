@@ -1,0 +1,23 @@
+body {
+	box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+    background-color: var(--grey1);
+    color: var(--dark);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    color: var(--blue7);
+    font-size: 1.2rem;
+}
+
+img {
+    width: 150px;
+    height: auto;
+}
+
+.post-container {
+    padding-left: 6rem;
+    padding-right: 6rem;
+}

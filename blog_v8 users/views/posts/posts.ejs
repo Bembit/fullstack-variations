@@ -1,0 +1,104 @@
+<%- include('../partials/header'); %> 
+
+    <div class="container">
+        <div class="vivid">
+            <h1>
+                <span>posts</span><br>
+                landing page
+            </h1>
+        </div>
+        <div class="solid">
+            <h1>
+                hello from demo &copy;
+            </h1>
+        </div>
+        <div class="slide">
+                <div class="slide-navigation">
+                    <div>
+                        <i class="fas fa-chevron-left"></i>
+                    </div>
+                    <div>
+                        <i class="fas fa-bars"></i>
+                    </div>
+                    <div>
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+                <div class="slide-divider">
+                    <!-- cards section -->
+                    <div class="divider-card-container">
+                        <h2>
+                            upcoming<br>
+                            <span>posts today</span>
+                        </h2>
+                        <% posts.forEach(function(posts){ %>
+                            <!-- individual cards -->
+                            <div class="display-card">
+                                <div class="display-card-header">
+                                    <h4>
+                                        <%= posts.name %>
+                                    </h4>
+                                    <div class="display-card-userinfo">
+                                        <span>
+                                            <%= moment(posts.created).fromNow() %>
+                                        </span>
+                                        by&nbsp;<a class="" href="/users/<%=posts.author.id%>"><%= posts.author.username %></a>
+                                    </div>
+                                </div>
+                                <div class="display-date">on <%= posts.created.toDateString() %></div>
+                                <div class="display-card-details">
+                                    <p>                                 
+                                        <%= posts.content.substring(0, 25) %> ...
+                                    </p>
+                                    <a class="" href="/posts/<%=posts._id%>">... More</a>
+                                </div>
+
+                                <div class="display-card-room"><%= posts.startTime %>&nbsp;-&nbsp;<span><%= posts.finishTime %></span></div>
+                            </div>
+                            
+                        <% }); %>
+                    </div>
+
+                </div>
+
+                <div class="slide-divider">
+                    
+                </div>
+                
+                <div class="circle-xlarge">
+                    
+                </div>
+                <div class="circle-xxlarge">
+                    
+                </div>
+                <div class="circle-offset-slidecounter">
+                    <div>Limit <br><span><%= posts.length %></span></div>
+                </div>
+                <div class="circle-large">
+                    <a href="">
+                        <div class="circle-medium circle-medium-1">
+                            <i class="fas fa-street-view"></i>
+                            <h3>Something I forgot</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing!</p>
+                        </div>
+                    </a>
+                    <a href="/posts/add">
+                        <div class="circle-medium circle-medium-2">
+                            <i class="fas fa-handshake"></i>
+                            <h3>Schedule your game</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing!</p>
+                        </div>
+                    </a>
+                    <a href="/posts/all">
+                        <div class="circle-medium circle-medium-3">
+                            <i class="fas fa-calendar-plus"></i>
+                            <h3>View all games</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing!</p>
+                        </div>
+                    </a>
+                </div>
+
+        </div>
+    </div>
+
+<%- include('../partials/footer'); %>

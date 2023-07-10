@@ -1,0 +1,55 @@
+<%- include('../partials/header'); %>
+
+
+<div class="container">
+
+    <div class="user-profile">
+
+        <%= user.username %>'s profile
+
+        <% if(user.id === currentUser._id.toString()) { %>
+            
+        <a class="btn" href="/users/<%= user._id %>/edit">Edit profile</a>
+        <% } %>
+            <%= user.email %>
+
+            <%= user.firstName + " " + user.lastName %>
+        
+        <% if(user.avatar) { %>
+            <img class="defaultProfilePic" src="<%= user.avatar %>" alt="user profile picture">
+        <% } else { %>
+            <img class="defaultProfilePic" src="https://images.unsplash.com/photo-1516575334481-f85287c2c82d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80" alt="user default test picture">
+        <% } %> 
+        
+        <% if(posts.length > 0) { %>
+            Posts by <%= user.username %>
+
+            <!-- here logic if they have any posts and if they own those posts at all -->
+            <% posts.forEach(function(posts) { %>
+            
+           <a href="/posts/<%= posts.id %>"> <%= posts.name %> </a>
+            
+            <% }); %>
+
+        <% } else { %>
+            <h3><%= user.username %> has no posts yet.</h3>
+        <% } %>
+
+        <% if(user.id === currentUser._id.toString()) { %>
+
+                You are on your own page
+    
+            <% } else { %>
+                
+                You are on <%= user.username %>'s page.
+                user ID <%= user.id %>
+                logged in ID <%= currentUser._id %>
+                    
+        <% } %>
+
+                    <%= currentUser._id %>
+
+    </div>
+</div>
+
+<%- include('../partials/footer'); %>

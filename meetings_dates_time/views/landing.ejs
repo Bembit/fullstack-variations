@@ -1,0 +1,20 @@
+<%- include('./partials/header'); %>
+
+    <div class="">
+        <div class="">
+            <h1>
+                hi from api
+            </h1>
+            <h4>
+                api routes
+            </h4>
+
+            <% if(!currentUser) { %>
+                <a class="" href="/login">Login</a>
+                <h3>or</h3>
+                <a class="" href="/register">Register</a>
+                <% } %>
+        </div>
+    </div>
+
+<%- include('./partials/footer'); %>

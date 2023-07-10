@@ -1,0 +1,45 @@
+<%- include('../partials/header'); %>
+
+<div class="container">
+
+    <div class="post-container post-container-all">
+    <!-- <div class="form-placeholder">
+        <input type="text" placeholder="Searchbar"><input type="Submit" value="Search">
+    </div> -->
+    <% posts.forEach(function(posts){ %>
+        
+        <div class="articles-container">
+                
+            <div class="articles-image-container">
+                <img src="https://images.unsplash.com/photo-1462804993656-fac4ff489837?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80" alt="">
+            </div>
+
+            <div class="artices-side-container">
+            
+            <h3> <%= posts.name %> </h3>
+           
+                
+            <span> <%= moment(posts.created).fromNow() %> </span>
+                    
+            <div> by&nbsp;<a class="" href="/users/<%=posts.author.id%>"><%= posts.author.username %></a> </div>
+                
+            <span> <%= posts.created.toDateString() %> </span>
+                                                
+            <div> <p> <%= posts.content.substring(0, 350) %> ... </p> </div>
+                
+            <a class="" href="/posts/<%=posts._id%>">read the full article</a>
+
+            </div>
+
+        </div>
+
+    <% }); %>
+                        
+                    
+    </div>         
+
+</div>
+
+Total <br><span><%= posts.length %></span></div>           
+
+<%- include('../partials/footer'); %>

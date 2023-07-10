@@ -1,0 +1,16 @@
+<%- include('../partials/header'); %>
+
+<div class="">
+        <div class="">
+            <div class="">
+            <form class="" action="/meetings/<%= meetings_id %>/comments/<%= comment._id %>?_method=PUT" method="POST">
+                <div class="">    
+                    <input class="" type="text" name="comment[text]" value="<%= comment.text %>"></input>
+                </div>
+                    <input class="" type="submit" value="save changes">
+            </form>
+            </div>
+        </div>    
+</div>
+
+<%- include('../partials/footer'); %>

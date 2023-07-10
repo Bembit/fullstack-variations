@@ -1,0 +1,16 @@
+<% include ../partials/header %>
+
+<div class="wrapper">
+        <div class="middle">
+            <div class="">
+            <form class="" action="/shitshow/<%= shitshow_id %>/comments/<%= comment._id %>?_method=PUT" method="POST">
+                <div class="">    
+                    <input class="" type="text" name="comment[text]" value="<%= comment.text %>"></input>
+                </div>
+                    <input class="" type="submit" value="Post comment">
+            </form>
+            </div>
+        </div>    
+</div>
+
+<% include ../partials/footer %>

@@ -1,0 +1,64 @@
+<% include ../partials/header %>
+<div class="wrapper">
+    <div class="margin-bottom__large flex__row flex__evenly">
+        
+        <div>
+            <h1 class="">
+                Search Blog Posts
+            </h1>       
+            <form action="/shitshow" method="GET" class="form__column">
+                <input class="" type="text" name="search" placeholder="Search">
+                <input type="submit" value="Search" class="">
+            </form>     
+        </div>
+        <div>   
+
+            <h1 class="">
+                Submit A New Blog Post
+            </h1> 
+            <form class="form__column" action="/shitshow" method="POST">
+                
+                    <label for="formGroupExampleInput">Title</label>
+                    <input type="text" name="name" class="" id="formGroupExampleInput" placeholder="Title">
+                
+                    <label for="formGroupExampleInput2">Content</label>
+                    <input type="text" name="content" class="" id="formGroupExampleInput2" placeholder="Content">
+               
+                <input class="" type="submit" value="Submit">
+            </form>
+        </div>  
+    </div>
+        
+<div class="">
+    <% shitshow.forEach(function(shitshow){ %>
+        <div class="blogpost blogpost__color">
+           
+                    <div class="blogpost__details">
+                        <h2 class="blogpost__title">
+                            <a class="" href="/shitshow/<%=shitshow._id%>"><%= shitshow.name %></a>
+                        </h2>
+                        <span> submitted <%= moment(shitshow.created).fromNow() %> by <strong><a class="" href="/users/<%=shitshow.author.id%>"><%= shitshow.author.username %></a></strong></span>
+                        <span> on <%= shitshow.created.toDateString() %> </span>
+                   
+                     
+                        <p> <%= shitshow.content %> <a class="" href="/shitshow/<%=shitshow._id%>"> <br>... continue reading</a> </p>
+                    </div>    
+                        <% if(currentUser && shitshow.author.id.equals(currentUser._id)) { %>
+                    
+                    <div class="flex__row flex__start">    
+                        <a class="btn" href="/shitshow/<%= shitshow._id %>/edit">Edit post</a>
+
+                        <form action="/shitshow/<%= shitshow._id %>?_method=DELETE" method="POST">
+                            <input class="" type="submit" value="Delete Post">
+                        </form>
+                        
+                   
+                        
+                    </div>
+                <% } %>   
+               
+        </div>
+    <% }); %>
+</div>
+</div>
+<% include ../partials/footer %>

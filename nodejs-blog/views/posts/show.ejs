@@ -1,0 +1,70 @@
+<% include ../partials/header %>
+
+<div class="wrapper">
+      <div class="blogpost blogpost__details">
+                        
+                            <h2 class="">
+                                <%= shitshow.name %>
+                            </h2>        
+                            <p class="">
+                                <span> <%= shitshow.created.toDateString() %></span><p>POSTED BY <a class="" href="/users/<%=shitshow.author.id%>"> <%= shitshow.author.username %></a>
+                            </p>
+                       
+                            <p>
+                               <%= shitshow.content %> 
+                            </p>
+                            <% if(currentUser && shitshow.author.id.equals(currentUser._id)) { %>
+                            </div>
+                                <div class="flex__row flex__start">
+
+                                <a class="btn" href="/shitshow/<%= shitshow._id %>/edit">Edit post</a>
+
+                                <form action="/shitshow/<%= shitshow._id %>?_method=DELETE" method="POST">
+                                    <input class="" type="submit" value="Delete Post">
+                                </form>
+                            
+                                <% } %>
+                            </div>
+           
+
+
+
+            <form class="middle comment__form" action="/shitshow/<%= shitshow._id %>/comments" method="POST">
+                <div class="">    
+                    <input class="" type="text" name="comment[text]" placeholder="Add Comment"></input>
+                </div>
+                    <input class="" type="submit" value="Send">
+            </form>
+
+
+<% shitshow.comments.forEach(function(comment) { %>
+    <div class="comment__color comments flex__row">
+        <div class="comments__details">
+            <a class="" href="/users/<%=shitshow.author.id%>">
+            <%= comment.author.username %>
+            </a>
+
+            <%= moment(comment.created).fromNow() %>
+            <p class="comment__text">
+            <%=comment.text%>
+            </p>
+        </div>
+        <% if(currentUser && comment.author.id.equals(currentUser._id)) { %>
+        <div class="flex__row">
+                
+                <a class="btn btn__comment" href="/shitshow/<%= shitshow._id %>/comments/<%= comment._id %>/edit">Edit comment</a>
+                <form action="/shitshow/<%= shitshow._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
+                    <input class="btn__comment" type="submit" class="" value="Delete Comment">
+                </form>
+                
+        </div>
+        <% } %>
+                             
+    </div>    
+   
+<% }); %>    
+            
+</div>
+
+
+<% include ../partials/footer %>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>meetings demo</title>
+        <link rel="stylesheet" href="/stylesheets/landing.css">
+        <link rel="stylesheet" href="/stylesheets/index.css">
+        <link rel="stylesheet" href="/stylesheets/nav.css">
+        <link rel="stylesheet" href="https://kit-free.fontawesome.com/releases/latest/css/free.min.css">
+    </head>
+    <body>
+        <nav class="">
+            <div class="">
+                    <span>MM</span>
+                    <a class="" href="/">home</a>
+                    <a class="" href="/meetings">meetings</a>
+                    <a class="" href="/meetings/add">addMeeting</a>
+                    <a class="" href="/meetings/all">allMeetings</a>
+                    <a class="" href="/login">login</a>
+                    <a class="" href="/register">register</a>
+            </div>
+        
+            <div class="">
+               
+                <%        if(!currentUser) { %>
+                  
+                        <a class="" href="/login">You are not logged in</a>
+                   
+                <%    }    else { %>
+                <!-- anchor tag it later for user profile pages -->
+                  
+                        <a class="" href="/users/<%=currentUser.id%>"> <%= currentUser.username %></a>
+                   
+                  
+                        <a class="" href="/logout">Logout</a>
+                   
+                <%    } %>
+                   
+            </div>
+        </nav>
+      
+    <% if(error && error.length > 0) { %>            
+
+        <p>
+            <%= error %>
+        </p>
+            
+    <% } %>
+
+    <% if(success && success.length > 0) { %>            
+    
+        <p>
+            <%= success %>
+        </p>
+        
+    <% } %> 
+

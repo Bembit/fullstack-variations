@@ -1,0 +1,69 @@
+<%- include('../partials/header'); %>
+
+<div class="">
+            <div class="">
+            
+                <h2 class="">
+                    <%= meetings.name %>
+                </h2>        
+                <p class="">
+                    <span> <%= meetings.created.toDateString() %></span><p>POSTED BY <a class="" href="/users/<%=meetings.author.id%>"> <%= meetings.author.username %></a>
+                </p>
+            
+                <p>
+                    <%= meetings.content %> 
+                </p>
+                <% if(currentUser && meetings.author.id.equals(currentUser._id)) { %>
+                </div>
+                    <div class="">
+
+                    <a class="btn" href="/meetings/<%= meetings._id %>/edit">Edit meeting</a>
+
+                    <form action="/meetings/<%= meetings._id %>?_method=DELETE" method="POST">
+                        <input class="" type="submit" value="Delete meeting">
+                    </form>
+                
+                    <% } %>
+            </div>
+           
+
+
+
+            <form class="" action="/meetings/<%= meetings._id %>/comments" method="POST">
+                <div class="">    
+                    <input class="" type="text" name="comment[text]" placeholder="Add Comment"></input>
+                </div>
+                    <input class="" type="submit" value="Send">
+            </form>
+
+
+<% meetings.comments.forEach(function(comment) { %>
+    <div class="">
+        <div class="">
+            <a class="" href="/users/<%=meetings.author.id%>">
+            <%= comment.author.username %>
+            </a>
+
+            <%= moment(comment.created).fromNow() %>
+            <p class="">
+            <%=comment.text%>
+            </p>
+        </div>
+        <% if(currentUser && comment.author.id.equals(currentUser._id)) { %>
+        <div class="">
+                
+                <a class="" href="/meetings/<%= meetings._id %>/comments/<%= comment._id %>/edit">Edit comment</a>
+                <form action="/meetings/<%= meetings._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
+                    <input class="" type="submit" class="" value="Delete Comment">
+                </form>
+                
+        </div>
+        <% } %>
+                             
+    </div>    
+   
+<% }); %>    
+            
+</div>
+
+<%- include('../partials/footer'); %>

@@ -1,0 +1,39 @@
+<%- include('./partials/header'); %>
+
+<div class="container">
+
+    <div class="left"></div>
+    <div class="right"></div>
+    
+    <div class="padding">
+        <div class="form-container">
+            <div class="form-header">
+                <a href="/register" class="form-header-message">
+                    <h1>signup</h1>
+                </a>
+                <a href="/login" class="form-header-placeholder">
+                    <h1>login</h1>
+                </a>
+            </div>
+            <div class="form-body">
+                <div class="form-body-container">
+                    <div class="form-title">
+                        <h2>welcome</h2>
+                        <p>This is a useless placeholder description that has absolutely no meaning as of now. Maybe I'll remove it later.</p>
+                    </div>
+                    <form class="form" action="/register" method="POST">
+                        <input type="text" name="username" placeholder="Username">
+                        <input type="password" name="password" placeholder="Password">
+                        <input type="text" name="firstname" placeholder="First Name">
+                        <input type="text" name="lastname" placeholder="Last Name">
+                        <input type="email" name="email" placeholder="Email">
+                        <input type="text" name="avatar" placeholder="avatar url">
+                        <input type="submit" value="register">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('./partials/footer'); %>

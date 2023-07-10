@@ -1,0 +1,117 @@
+<%- include('../partials/header'); %>
+
+    <div class="container">
+        <div class="vivid">
+            <h1>
+                <span>how the fuck </span><br>
+                meetings
+            </h1>
+        </div>
+        <div class="solid">
+            <h1>
+                hello &copy;
+            </h1>
+        </div>
+        <div class="slide">
+                <div class="slide-navigation">
+                    <div>
+                        <i class="fas fa-chevron-left"></i>
+                    </div>
+                    <div>
+                        <i class="fas fa-bars"></i>
+                    </div>
+                    <div>
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+                <!-- side nav slider search bar -->
+           
+                <!--  -->
+                <div class="slide-add">
+                       
+                    <h2>
+                        view all<br>
+                        <span>meetings</span>
+                    </h2>
+                            
+                    <form class="form form-add" action="/meetings" method="POST">
+                                  
+                        <label for="">Date</label>
+                        <input id="date" type="date" name="date" class="" id="" placeholder="Date">
+
+                        <label for="">startTime</label>
+                        <input id="startTime" type="time" name="startTime" class="" id="" placeholder="startTime">
+
+                        <label for="">finishTime</label>
+                        <input id="finishTime" type="time" name="finishTime" class="" id="" placeholder="finishTime">
+                        
+                        <label for="">checkSlot</label>                      
+                            <div id="checkSlot" class="checkSlot">
+                                check availability
+                            </div>
+
+                        <label for="">Room</label>
+                        <input type="text" name="room" class="" id="" placeholder="Room">
+
+                        <label for="">Title</label>
+                        <input type="text" name="name" class="" id="" placeholder="Title">
+
+                        <label for="">Content</label>
+                        <input type="text" name="content" class="" id="" placeholder="Content">
+
+                        <input class="" type="submit" value="Submit">   
+
+                    </form>
+                    
+                </div>
+
+                
+                <div class="circle-offset-slidecounter">
+                
+                    <div>Add <br><span>new</span></div>
+     
+                </div>
+                
+
+        </div>
+    </div>
+
+<%- include('../partials/footer'); %>
+
+<script>
+
+// quick check frontend script for now
+// style it later for a small error div
+
+    $("#checkSlot").click(function() {
+        // schema should be structured by date, with current way query would be huge eventually
+        $.ajax({url: "/api/meetings", success: function(meetings) {
+
+            let dateInput = document.getElementById("date").value
+            let startInput = document.getElementById("startTime").value
+            let finishInput = document.getElementById("finishTime").value
+            let checkDateInput = meetings.filter((meeting) => meeting.date === dateInput)
+            // check if user can tell the difference between start and finish time
+            if((dateInput) && (startInput < finishInput)) {
+
+                // log all the meetings that are on the same day as user input date
+                checkDateInput.map(function(meeting) {
+                    // user input start should be greater than or equal to already existing meetings start time, and less than already existing meetings finish time.
+                    // a simple if won't cut it obviously
+                    if((startInput >= meeting.startTime) && (finishInput <= meeting.finishTime)){
+                        alert('a valasztott napra ez az idopont foglalt ' + meeting.startTime + ' es ' + meeting.finishTime + ' kozott.')
+                        console.log(meeting)
+                        
+                    } else {
+                        // just log all other meetings for now to see results
+                        console.log('checked meetings, no conflict between dates and times with users request')
+                    }
+                })
+            } else {
+                // enough error handling for now..
+                alert('user is either retarded, meeting start is after the end of the meeting, or user is retarded cause there are no inputs but wants to check that nothing');
+            }
+        }});
+    });
+
+</script>

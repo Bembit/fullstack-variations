@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>nodejsdemo</title>
+        <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700" rel="stylesheet">
+        <link rel="stylesheet" href="/stylesheets/main.css">
+    </head>
+    <body>
+        <nav class="navigation">
+            <div class="navigation__left">
+                    <a class="navigation__item" href="/">Home</a>
+                    <a class="navigation__item" href="/quickchat">posts</a> 
+                    <a class="navigation__item" href="/shitshow">blog</a>
+            </div>
+        
+            <div class="navigation__right">
+               
+                <%        if(!currentUser) { %>
+                  
+                        <a class="navigation__item" href="/login">You are not logged in</a>
+                   
+                <%    }    else { %>
+                <!-- anchor tag it later for user profile pages -->
+                  
+                        <a class="navigation__item" href="/users/<%=currentUser.id%>"> <%= currentUser.username %></a>
+                   
+                  
+                        <a class="navigation__item" href="/logout">Logout</a>
+                   
+                <%    } %>
+                   
+
+                   
+           
+            </div>
+        </nav>
+      
+<% if(error && error.length > 0) { %>            
+    <div>
+        <div>
+            <p>
+                <%= error %>
+            </p>
+        </div>
+    </div>
+<% } %>
+
+<% if(success && success.length > 0) { %>            
+    <div>
+        <div>
+            <p>
+                <%= success %>
+            </p>
+        </div>
+    </div>
+<% } %> 
+

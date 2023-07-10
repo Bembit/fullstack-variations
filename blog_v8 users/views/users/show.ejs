@@ -1,0 +1,118 @@
+<%- include('../partials/header'); %>
+
+<div class="container">
+    <div class="">
+
+        <h1>
+            <%= user.username %>'s profile
+        </h1>
+        <% if(user.id === currentUser._id.toString()) { %>
+        <a class="btn" href="/users/<%= user._id %>/edit">Edit profile</a>
+        <% } %>
+        <h5>
+            <%= user.email %>
+        </h5>
+
+        <h4>
+            <%= user.firstName + " " + user.lastName %>
+        </h4>
+        
+        <% if(user.avatar) { %>
+            <img class="defaultProfilePic" src="<%= user.avatar %>" alt="user profile picture">
+        <% } else { %>
+            <img class="defaultProfilePic" src="https://res.cloudinary.com/bembit/image/upload/v1582219790/account.svg" alt="user default test picture">
+        <% } %> 
+        
+        <% if(posts.length > 0) { %>
+        <h3>
+            Posts by <%= user.username %>
+        </h3>
+
+        <ul>
+            <!-- here logic if they have any posts and if they own those posts at all -->
+            <% posts.forEach(function(posts) { %>
+            
+            <li><a href="/posts/<%= posts.id %>"> <%= posts.name %> </a></li>
+            
+            <% }); %>
+
+        </ul>
+        <% } else { %>
+            <h3><%= user.username %> has no posts yet.</h3>
+            <!-- bug bug anyone can see "go schedule one" -->
+        <% } %>
+
+
+        <% if(user.id === currentUser._id.toString()) { %>
+
+            <h3>
+                You are on your own page
+            </h3>
+    
+            <% } else { %>
+                
+            <h3>
+                You are on <%= user.username %>'s page.
+                <br>
+                user ID <%= user.id %>
+                <br>
+                logged in ID <%= currentUser._id %>
+            </h3>
+                    
+        <% } %>
+
+        
+
+                <% if(notes.length > 0) { %>
+                    <h3>
+                            no
+                    </h3>
+                    <% } else { %>
+                        <h3>yes</h3>
+                    <% } %>
+                
+                <div>
+                
+
+                    <h1>this post will crash the server ^^</h1>
+
+                    <form class="form form-add" action="/:id" method="POST">
+                
+                            <label for="name">Title</label>
+                            <input type="text" name="name" class="" id="" placeholder="Title">
+                
+                            <label for="">Content</label>
+                            <input type="text" name="content" class="" id="" placeholder="Content">
+                
+                            <input class="" type="submit" value="Submit">   
+                
+                    </form>
+                
+                    <% notes.forEach(function(note){ %>
+            
+                            
+                                    <span>
+                                        <%= moment(note.created).fromNow() %>
+                                    </span>
+                                <p>                                 
+                                    <%= note.content %>
+                                </p>
+                
+                                <p>                                 
+                                    <%= note.author %>
+                                </p>
+                
+                        
+                    <% }); %>
+                
+                </div>
+
+
+
+                    <%= currentUser._id %>
+
+
+    </div>
+</div>
+
+<%- include('../partials/footer'); %>

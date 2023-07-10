@@ -1,0 +1,89 @@
+<%- include('../partials/header'); %>
+
+    <div class="container">
+        <div class="vivid">
+            <h1>
+                <span>how the fuck </span><br>
+                posts
+            </h1>
+        </div>
+        <div class="solid">
+            <h1>
+                hello from demo &copy;
+            </h1>
+        </div>
+        <div class="slide">
+                <div class="slide-navigation">
+                    <div>
+                        <i class="fas fa-chevron-left"></i>
+                    </div>
+                    <div>
+                        <i class="fas fa-bars"></i>
+                    </div>
+                    <div>
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+      
+                <!-- dummy search bar until items and dbs are connected to shop -->
+                <div class="slide-viewall">
+                    
+                        <div class="search-bar">
+                      
+                            <form action="/posts/all" method="GET" class="">
+                                <input class="" type="text" name="search" placeholder="Search">
+                                <input type="submit" value="Search" class="">
+                            </form>     
+                       
+                        </div>
+
+                        <h4 class="temp-calendar">wawaawaw</h4>
+
+                        <div class="calendar-view">
+                        <!-- calendar api here -->
+                        <!-- implement pagination for 9 results / 1 month later -->
+                        <% posts.forEach(function(posts){ %>
+                            
+                            <!-- individual cards -->
+                            <div class="display-card">
+                                <div class="display-card-header">
+                                    <h4>
+                                        <%= posts.name %>
+                                    </h4>
+                                    <div class="display-card-userinfo">
+                                        <span>
+                                            <%= moment(posts.created).fromNow() %>
+                                        </span>
+                                        by&nbsp;<a class="" href="/users/<%=posts.author.id%>"><%= posts.author.username %></a>
+                                    </div>
+                                </div>
+                                <div class="display-date">on <%= posts.created.toDateString() %></div>
+                                <div class="display-card-details">
+                                    <p>                                 
+                                        <%= posts.content.substring(0, 100) %> ...
+                                    </p>
+                                    <a class="" href="/posts/<%=posts._id%>">... More</a>
+                                </div>
+
+                                <div class="display-card-room">14:30 - <span>15:30</span></div>
+                            </div>
+                       
+                        <% }); %>
+                        
+                        </div>                  
+
+                </div>
+
+                
+                <div class="circle-offset-slidecounter">
+                
+                    <div>Total <br><span><%= posts.length %></span></div>
+     
+                </div>
+                
+
+        </div>
+    </div>
+
+
+<%- include('../partials/footer'); %>

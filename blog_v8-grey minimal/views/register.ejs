@@ -1,0 +1,31 @@
+<% include ./partials/header %>
+
+
+<div class="wrapper">
+<form action="/register" method="POST" class="middle">
+    <h2 class="">Register</h2>
+	<div>
+    	<input type="text" name="username" placeholder="Username">
+    </div>
+    <div>
+    	<input type="password" name="password" placeholder="Password">
+    </div>
+    <div>	
+    	<input type="text" name="firstname" placeholder="First name">
+    </div>
+    <div>
+    <input type="text" name="lastname" placeholder="Last name">
+    </div>
+    <div>
+    	<input type="email" name="email" placeholder="Email">
+    </div>
+    <div>	
+    	<input type="text" name="avatar" placeholder="Avatar url">
+    </div>
+    <div>	
+    	<button class="btn">Register</button>
+    </div>	
+</form>
+</div>
+
+<% include ./partials/footer %>

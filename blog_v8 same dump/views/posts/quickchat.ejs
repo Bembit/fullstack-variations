@@ -1,0 +1,35 @@
+ <% include ../partials/header %>
+<div class="wrapper">
+
+    <div class="middle margin-bottom__large">
+         
+        <div class="middle">
+            <h1 class="">
+                Posts
+            </h1>        
+ 
+            <form class="" action="/quickchat" method="POST">
+                
+                    <label for="formGroupExampleInput2">Post something</label>
+                    <input type="text" name="content" id="formGroupExampleInput2" placeholder="Post content here">
+               
+                <input class="" type="submit" value="submit">
+            </form>
+        </div>
+    </div>               
+    
+
+    <% quickchat.forEach(function(quickchat){ %>
+        <div class="post__color blogpost blogpost__details">  
+                    
+                        <span> submitted by <a class="" href="/users/<%=quickchat.author.id%>"><%= quickchat.author.username %></a></span>
+                        <span> <%= moment(quickchat.created).fromNow() %> </span>
+                        
+                        <img src="<%= quickchat.author.avatar %>">
+                        <p> <%= quickchat.content %> </p>
+                    
+    </div> 
+    <% }); %>
+   
+</div>  
+<% include ../partials/footer %>

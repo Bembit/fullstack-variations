@@ -1,0 +1,38 @@
+<%- include('./partials/header'); %>
+
+<div class="container"> 
+
+    <div class="users-page">
+
+    <% users.forEach(function(user){ %>
+           
+        <div class="users-page-profile">
+
+                <a href="/users/<%=user.id%>">
+                        <%= user.username %>
+                </a>
+
+                <% if(user.avatar) { %>
+                    <img class="defaultProfilePic" src="<%= user.avatar %>" alt="user profile picture">
+                <% } else { %>
+                    <img class="defaultProfilePic" src="https://images.unsplash.com/photo-1516575334481-f85287c2c82d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80" alt="user default test picture">
+                <% } %> 
+
+                <div><%= user.firstName %></div>
+                <div><%= user.lastName %></div>
+                <div><%= user.email %></div>
+        
+                <% if(user.created) { %>
+                    <div>joined on: <%= user.created.toDateString() %></div>
+                <% } else { %>
+                    <div> ^_- </div>
+                <% } %> 
+
+        </div>
+
+    <% }); %>
+    
+    </div>
+</div>
+
+<%- include('./partials/footer'); %>

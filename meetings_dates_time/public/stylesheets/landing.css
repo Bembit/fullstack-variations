@@ -1,0 +1,235 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900&display=swap');
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i&display=swap');
+
+:root {
+	--black: #333;
+	--dark: #333;
+    --white: #fff;
+    --light-grey: #f9f9f9;
+    --grey: #f1f1f1;
+    --dark-grey: #ececec;
+    --primary: #e64c4c;
+    --secondary: #25c7a2;
+    --tert: #3be2bc;
+    --comp: #054ada;
+	--test: #f5515f;
+	--transp: rgba(167, 37, 199, 0.35);
+	--darker: #151515;
+	--col2: #1b96f1;
+	--col4: #ef32fb ;
+	--col6: #3544dc ;
+	--col10: #fb8332;
+	--col12: #f8c332;
+	--col14: #9f046c;
+	--col15: #8e2ef7;
+	--red: #C7254A;
+	--ibm-blue: #054ada;
+    --ibm-dark-blue: #0f3da0;
+    --green: #9ddd22;
+}
+
+*,
+*::after,
+*::before {
+	margin: 0;
+	padding: 0;
+	box-sizing: inherit;
+}
+
+::selection {
+	background-color: var(--green);
+	color: var(--white);
+}
+
+html {
+	font-size: 62.5%;
+}
+
+body {
+	box-sizing: border-box;
+    font-family: 'IBM Plex Sans', sans-serif;
+    background-color: var(--grey);
+}
+
+.container {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    position: relative;
+}
+
+.container .padding {
+    height: 515px;
+    width: 440px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--grey);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: .97;
+}
+
+.container .left {
+    background-color: var(--grey);
+    flex-basis: 45%;
+    height: 100%;
+}
+
+.container .right {
+    background-image: url(https://res.cloudinary.com/bembit/image/upload/v1582219286/img.svg), linear-gradient(to bottom, var(--ibm-blue), var(--ibm-dark-blue));
+    /* background-image: linear-gradient(to right bottom, var(--transp), var(--transp)), url(./img.svg); */
+    flex-basis: 55%;
+    height: 100%;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    height: 500px;
+    width: 425px;
+    background-color: var(--white);
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.1);
+    color: var(--black);
+    justify-content: space-between;
+}
+
+.form-header {
+    display: flex;
+    flex-direction: row;
+    flex-basis: 10%;
+    border-bottom: 1px solid var(--grey);
+}
+
+.form-header a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.form-header a:hover {
+    background-color: var(--ibm-dark-blue);
+    color: var(--white);
+}
+
+.form-header a:last-of-type:hover {
+    background-color: var(--green);
+    color: var(--white);
+}
+
+.form-header a:first-of-type {
+    color: var(--white);
+}
+
+.form-header h1 {
+    font-size: 1.6rem;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.form-header-message {
+    display: flex;
+    flex-basis: 50%;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--ibm-blue);
+    color: var(--white);
+}
+
+.form-header-placeholder {
+    display: flex;
+    flex-basis: 50%;
+    /* border-left: 1px solid var(--grey); */
+    align-items: center;
+    justify-content: center;
+}
+
+.form-body {
+    display: flex;
+    flex-basis: 90%;
+    flex-direction: column;
+}
+
+.form-body-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 2rem;
+}
+
+.form-body-container .form-title {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 30%;
+}
+
+.form-body-container h2 {
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+}
+
+.form-body-container p {
+    font-size: 1.4rem;
+    font-weight: 300;
+}
+
+.form-body-container form {
+    display: flex;
+    flex-basis: 70%;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+input {
+    border: none;
+}
+
+form ::placeholder {
+    text-transform: uppercase;
+    font-size: 1.2rem;
+}
+
+input,
+input:focus {
+    outline: none;
+}
+
+input:focus,
+input:active {
+    border: 1px solid var(--green);
+}
+
+input[type=text],
+input[type=password],
+input[type=email] {
+    height: 15%;
+    background-color: var(--grey);
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.1);
+    text-indent: 2rem;
+    color: var(--black);
+}
+
+input[type=text]:focus * input {
+    text-indent: 4rem;
+}
+
+input[type=submit] {
+    margin-top: 1.5rem;
+    background-color: var(--ibm-blue);
+    height: 15%;
+    color: var(--white);
+    text-transform: uppercase;
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.1);
+
+}
+
+input[type=submit]:hover {
+    background-color: var(--ibm-dark-blue);
+    cursor: pointer;
+}

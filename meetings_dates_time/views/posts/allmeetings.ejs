@@ -1,0 +1,90 @@
+<%- include('../partials/header'); %>
+
+    <div class="container">
+        <div class="vivid">
+            <h1>
+                <span>how the fuck </span><br>
+                meetings
+            </h1>
+        </div>
+        <div class="solid">
+            <h1>
+                hello from demo &copy;
+            </h1>
+        </div>
+        <div class="slide">
+                <div class="slide-navigation">
+                    <div>
+                        <i class="fas fa-chevron-left"></i>
+                    </div>
+                    <div>
+                        <i class="fas fa-bars"></i>
+                    </div>
+                    <div>
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+                <!-- side nav slider search bar -->
+           
+                <!--  -->
+                <div class="slide-viewall">
+                    
+                        <div class="search-bar">
+                      
+                            <form action="/meetings/all" method="GET" class="">
+                                <input class="" type="text" name="search" placeholder="Search">
+                                <input type="submit" value="Search" class="">
+                            </form>     
+                       
+                        </div>
+
+                        <h4 class="temp-calendar">Feb 24 (should be a column, entries below)</h4>
+
+                        <div class="calendar-view">
+                        <!-- calendar api here -->
+                        <!-- implement pagination for 9 results / 1 month later -->
+                        <% meetings.forEach(function(meetings){ %>
+                            
+                            <!-- individual cards -->
+                            <div class="meeting-card">
+                                <div class="meeting-card-header">
+                                    <h4>
+                                        <%= meetings.name %>
+                                    </h4>
+                                    <div class="meeting-card-userinfo">
+                                        <span>
+                                            <%= moment(meetings.created).fromNow() %>
+                                        </span>
+                                        by&nbsp;<a class="" href="/users/<%=meetings.author.id%>"><%= meetings.author.username %></a>
+                                    </div>
+                                </div>
+                                <div class="meeting-date">on <%= meetings.created.toDateString() %></div>
+                                <div class="meeting-card-details">
+                                    <p>                                 
+                                        <%= meetings.content.substring(0, 100) %> ...
+                                    </p>
+                                    <a class="" href="/meetings/<%=meetings._id%>">... More</a>
+                                </div>
+
+                                <div class="meeting-card-room">14:30 - <span>15:30</span></div>
+                            </div>
+                       
+                        <% }); %>
+                        
+                        </div>                  
+
+                </div>
+
+                
+                <div class="circle-offset-slidecounter">
+                
+                    <div>Total <br><span><%= meetings.length %></span></div>
+     
+                </div>
+                
+
+        </div>
+    </div>
+
+
+<%- include('../partials/footer'); %>

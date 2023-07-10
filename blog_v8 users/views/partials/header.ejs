@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>demo</title>
+        <link rel="stylesheet" href="/stylesheets/landing.css">
+        <link rel="stylesheet" href="/stylesheets/index.css">
+        <link rel="stylesheet" href="/stylesheets/nav.css">
+        <link rel="stylesheet" href="https://kit-free.fontawesome.com/releases/latest/css/free.min.css">
+    </head>
+    <body>
+        <nav class="">
+            <div class="">
+                    <span>demo</span>
+                    <a class="" href="/">home</a>
+                    <a class="" href="/posts">posts</a>
+                    <a class="" href="/posts/add">addPost</a>
+                    <a class="" href="/posts/all">allPosts</a>
+
+                    <!-- <% if(currentUser) { -->
+                        <!-- dont show login and register -->
+                    <!-- } -->
+                
+                    <a class="" href="/login">login</a>
+                    <a class="" href="/register">register</a>
+            </div>
+        
+            <div class="">
+               
+                <%        if(!currentUser) { %>
+                  
+                        <a class="" href="/login">You are not logged in</a>
+                   
+                <%    }    else { %>
+                <!-- anchor tag it later for user profile pages -->
+                    
+                        <a class="" href="/users">Users</a>
+
+                <!-- herehrehrehrehrhehre -->
+                        <a class="" href="/users/<%=currentUser.id%>"> <img class="preview-img" src="<%=currentUser.avatar %>"> </img> <%= currentUser.username %></a>
+                   
+                  
+                        <a class="" href="/logout">Logout</a>
+                   
+                <%    } %>
+                   
+            </div>
+        </nav>
+      
+    <% if(error && error.length > 0) { %>            
+
+        <p>
+            <%= error %>
+        </p>
+            
+    <% } %>
+
+    <% if(success && success.length > 0) { %>            
+    
+        <p>
+            <%= success %>
+        </p>
+        
+    <% } %> 
+
